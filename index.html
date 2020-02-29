@@ -41,7 +41,7 @@
             <div class="col-md-4">
                 <div class="diposit trans-card">
                     <h5>Deposit</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentDeposit">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -53,14 +53,34 @@
             <div class="col-md-4">
                 <div class="balance trans-card">
                     <h5>Balance</h5>
-                    <h2>$1200</h2>
+                    <h2>$ <span id="currentBalance">1240</span></h2>
                 </div>
             </div>
         </div>
+
+        <!-----------------------All Custom Script----------------------------------->
+    <div class="row input-section-body">
+        <div class="col-md-6">
+            <div class="form-group input-section">
+                <h3>Deposit</h3>
+                <input id="dipositAmount" type="text" class="form-control" placeholder="$amount you want to deposit">
+                <button id="deposit" class="btn btn-info">Enter</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group input-section">
+                <h3>Withdraw</h3>
+                <input type="text" class="form-control" placeholder="$amount you want to withdraw">
+                <button id="withdraw" class="btn btn-info">Enter</button>
+            </div>
+        </div>
     </div>
+    </div>
+    
 
     <!-----------------------All Custom Script----------------------------------->
     <script>
+        // login button event handler
         const loginButton = document.getElementById("login");
         loginButton.addEventListener("click", function () {
             const loginArea = document.getElementById("login-area");
@@ -68,6 +88,28 @@
             const transectionArea = document.getElementById("transection-area");
             transectionArea.style.display = "block";
         });
+        // deposit and withdraw button event handler
+        const deopsitButton = document.getElementById("deposit");
+        deopsitButton.addEventListener("click",function(){
+            const depositAmount = document.getElementById("dipositAmount").value;
+            const depositNumber = parseFloat(depositAmount);
+            // const currentDeposit = document.getElementById("currentDeposit").innerText;
+            // const currentDepositNumber = parseFloat(currentDeposit);
+            // const totalDeposit = depositNumber + currentDepositNumber;
+            // document.getElementById("currentDeposit").innerText = totalDeposit;   
+            updateSpanTags("currentDeposit",depositNumber);      
+            updateSpanTags("currentBalance",depositNumber);
+
+            document.getElementById("dipositAmount").value = "";
+
+            
+        });
+        function updateSpanTags(id,depositNumber){
+            const currentBalance = document.getElementById(id).innerText;
+            const currentBalanceNumber = parseFloat(currentBalance);
+            const totalBalance = depositNumber + currentBalanceNumber;
+            document.getElementById(id).innerText = totalBalance;
+        }
     </script>
     <!-----------------------All Script----------------------------------->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

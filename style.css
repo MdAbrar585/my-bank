@@ -32,3 +32,16 @@ body{
 .balance{
     background-color: orange;
 }
+.input-section-body{
+    margin-top: 20px;
+}
+.input-section{
+    border: 1px solid;
+    border: none;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px lightgrey;
+}
+#deposit,#withdraw{
+    margin-top: 8px;
+}
